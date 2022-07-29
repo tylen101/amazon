@@ -1,5 +1,8 @@
 import React from 'react';
 import '../CSS/product.css';
+
+
+
 function Product({ title, image, price, rating, id }) {
   return (
     <div className="product">
@@ -21,7 +24,7 @@ function Product({ title, image, price, rating, id }) {
         src={image}
         alt="product"
       />
-      <button>Add to Basket</button>
+      <button >Add to Cart</button>
     </div>
   );
 }
