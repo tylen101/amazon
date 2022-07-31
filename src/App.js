@@ -3,15 +3,21 @@ import './CSS/App.css';
 import Header from './components/Header';
 import Home from './components/Home';
 import Checkout from './components/Checkout';
+import Login from './components/Login.js';
+import WithNav from './components/WithNav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
 function App() {
   return (
     <div className="app">
       <Router>
-        <Header />
+        {/* <Header /> */}
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/checkout" element={<Checkout />} />
+          <Route element={<WithNav />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/checkout" element={<Checkout />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
       </Router>
     </div>
