@@ -1,8 +1,12 @@
 export const ADD_TO_BASKET = 'ADD_TO_BASKET';
 export const REMOVE_FROM_BASKET = 'REMOVE_FROM_BASKET';
+const SET_USER = 'SET_USER';
+
+export const setUser = (user) => ({ type: SET_USER, user });
 
 export const initialState = {
   basket: [],
+  user: null,
 };
 
 export const getBasketTotal = (basket) => {
@@ -27,6 +31,11 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         basket: newBasket,
+      };
+    case SET_USER:
+      return {
+        ...state,
+        user: action.user,
       };
     default:
       return state;

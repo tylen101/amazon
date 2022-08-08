@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './CSS/App.css';
 import Header from './components/Header';
 import Home from './components/Home';
@@ -6,8 +6,21 @@ import Checkout from './components/Checkout';
 import Login from './components/Login.js';
 import WithNav from './components/WithNav';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { auth } from './firebase.js';
+import { useStateValue } from './store/StateProvider';
+import { setUser } from './store/reducer';
 
 function App() {
+  const [{}, dispatch] = useStateValue();
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+        dispatch(setUser(user));
+      } else {
+        dispatch(setUser(null));
+      }
+    });
+  }, []);
   return (
     <div className="app">
       <Router>
